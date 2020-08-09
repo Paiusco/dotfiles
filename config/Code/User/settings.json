@@ -1,0 +1,54 @@
+{
+   "editor.tabSize": 3,
+   "editor.codeActionsOnSave": null,
+   "files.trimTrailingWhitespace": true,
+   "editor.rulers": [80],
+   "editor.detectIndentation": false,
+   "editor.useTabStops": false,
+   "editor.cursorStyle": "block",
+   "window.zoomLevel": -1,
+   "editor.columnSelection": false,
+   "workbench.statusBar.visible": true,
+   "editor.minimap.enabled": false,
+   "breadcrumbs.enabled": true,
+   "editor.renderWhitespace": "all",
+   "editor.renderControlCharacters": false,
+   "editor.largeFileOptimizations": false,
+   "C_Cpp.default.includePath": [
+      "all"
+   ],
+   "editor.suggestSelection": "first",
+   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+   "editor.fontSize": 13,
+   "cSpell.allowCompoundWords": true,
+   "cSpell.enabledLanguageIds": [
+      "asciidoc",
+      "c",
+      "cpp",
+      "csharp",
+      "css",
+      "git-commit",
+      "handlebars",
+      "haskell",
+      "html",
+      "java",
+      "javascript",
+      "javascriptreact",
+      "json",
+      "jsonc",
+      "latex",
+      "less",
+      "markdown",
+      "plaintext",
+      "python",
+      "restructuredtext",
+      "rust",
+      "text",
+      "yml",
+      "sh"
+   ],
+   "cSpell.language": "en, en-GB"
+   "workbench.colorCustomizations": {
+      "editorRuler.foreground": "#ffbf00"
+  }
+}
