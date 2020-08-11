@@ -35,3 +35,4 @@ Shift+Alt+F12     - Find all references (Better than Ctrl+Shift+F for methods)
 Ctrl+K Enter      - Keep editor *useful* (Same as double click)
 Alt+Super+Arrow   - Move editor into Next/Previous group (Homemade)
 Ctrl+Shift+V      - Preview Markdown files
+
