@@ -2,17 +2,15 @@
 " Based from awidegreen 
 " https://github.com/awidegreen/dotfiles
 
-call plug#begin('~/vim//plugged')      "Start for vim-plug
+call plug#begin('~/vim//plugged')      " Start for vim-plug
 
 Plug 'rafi/awesome-vim-colorschemes'   " Tons of colourschemes
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' "Code Snippets
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " Code Snippets
 Plug 'preservim/nerdtree'              " Help with exploring files
 Plug 'itchyny/lightline.vim'           " Minimalist powerline (vim-airline seems overkill)
-Plug 'vim-utils/vim-man'               " Vim for MAN pages
 Plug 'sheerun/vim-polyglot'            " Identation and syntax for tons of languages
-Plug 'dag/vim-fish'                    " Syntax for the best shell ever :)
 
-call plug#end() "End for vim-plug
+call plug#end() " End for vim-plug
 
 " This must be first
 if &compatible
@@ -36,7 +34,7 @@ set t_Co=256         " Supporting 256 colours
 set colorcolumn=81   " Ruler at 81 chars
 " highlight ColorColumn ctermbg=156  " How to force color to red?
 
-set cursorline       " Highlight the current line under cursor
+" set cursorline       " Highlight the current line under cursor
 set laststatus=2     " Useful to show better powerline
 syntax on
 " }
@@ -68,7 +66,6 @@ set noswapfile       " No annoying swap file
 
 filetype plugin indent on
 " Plugs that I think one should take a look into later:
-" Plug 'scrooloose/nerdtree'
 " Plug 'tpope/vim-commentary'   " toggle comments
 " FZF should be added together
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -78,6 +75,7 @@ filetype plugin indent on
 " Plug 'tpope/vim-fugitive' " Git thingy
 " Plug 'ctrlpvim/ctrlp.vim' " Ctrl+p to find files. Isn't fzf gonna cover
 " that?
+" Plugin 'jiangmiao/auto-pairs'
 "
 "
 " Another neat .vimrc to learn from
