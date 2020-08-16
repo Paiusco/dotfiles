@@ -30,7 +30,6 @@ set list
 set listchars=tab:▸\ ,eol:¬ 
 
 set t_Co=256         " Supporting 256 colours
-
 set colorcolumn=81   " Ruler at 81 chars
 " highlight ColorColumn ctermbg=156  " How to force color to red?
 
@@ -63,6 +62,20 @@ set mouse=a          " Enable using the mouse if terminal emulator supports it
 set noswapfile       " No annoying swap file
 " }
 
+" -----------------------------------------------------------------------------
+"  " Plugin settings, mappings and autocommands
+"  "
+"  -----------------------------------------------------------------------------
+
+" .............................................................................
+" " SirVer/ultisnips
+" "
+" .............................................................................
+"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+
 
 filetype plugin indent on
 " Plugs that I think one should take a look into later:
@@ -76,6 +89,12 @@ filetype plugin indent on
 " Plug 'ctrlpvim/ctrlp.vim' " Ctrl+p to find files. Isn't fzf gonna cover
 " that?
 " Plugin 'jiangmiao/auto-pairs'
+"
+" Automatically clear search highlights after you move your cursor.
+" Plug 'haya14busa/is.vim'
+"
+" Automatically show Vim's complete menu while typing.
+" Plug 'vim-scripts/AutoComplPop'
 "
 "
 " Another neat .vimrc to learn from
