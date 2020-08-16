@@ -1,5 +1,5 @@
 " paiusco vimrc file
-" Based from awidegreen 
+" Based from awidegreen
 " https://github.com/awidegreen/dotfiles
 
 call plug#begin('~/vim//plugged')      " Start for vim-plug
@@ -9,7 +9,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " Code Snippets
 Plug 'preservim/nerdtree'              " Help with exploring files
 Plug 'itchyny/lightline.vim'           " Minimalist powerline (vim-airline seems overkill)
 Plug 'sheerun/vim-polyglot'            " Identation and syntax for tons of languages
-
+Plug 'ntpeters/vim-better-whitespace'" Shows and trims whitespaces
 call plug#end() " End for vim-plug
 
 " This must be first
@@ -23,11 +23,11 @@ endif
 colorscheme gruvbox
 set background=dark
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox'
-      \ }
+    \ 'colorscheme': 'gruvbox'
+    \ }
 
 set list
-set listchars=tab:▸\ ,eol:¬ 
+set listchars=tab:▸\ ,eol:¬
 
 set t_Co=256         " Supporting 256 colours
 set colorcolumn=81   " Ruler at 81 chars
@@ -62,20 +62,45 @@ set mouse=a          " Enable using the mouse if terminal emulator supports it
 set noswapfile       " No annoying swap file
 " }
 
-" -----------------------------------------------------------------------------
-"  " Plugin settings, mappings and autocommands
-"  "
-"  -----------------------------------------------------------------------------
+" Plugin settings, mappings and autocommands {
 
-" .............................................................................
-" " SirVer/ultisnips
-" "
-" .............................................................................
-"
+" Define leader key
+let mapleader = " "
+
+" Opens the .vimrc in a vertical splitt
+noremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" 'source my vimrc'
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Get rid of search highlights
+nnoremap <leader><space> :noh<cr>
+
+" Exist insert mode with çç
+inoremap çç <esc>
+
+" Save file from insert mode
+inoremap çw <esc>:w<cr>
+
+" Save file from normal mode
+nnoremap çw <esc>:w<cr>
+
+" toggle NERDtree with F3
+nnoremap <F3> :NERDTreeToggle<CR>
+
+" SirVer/ultisnips
+" ------------------------------------------------------------------------------
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+" ntpeters/vim-better-whitespace
+" ------------------------------------------------------------------------------
+let g:better_whitespace_enabled=1 " Enables highlighting
+let g:strip_whitespace_confirm=0  " Remove the confirmation every time its saves
+let g:strip_whitespace_on_save=1  " Trim the whitespaces on save
+" let g:strip_only_modified_lines=1 " Trims only on modified lines
 
+" }
 
 filetype plugin indent on
 " Plugs that I think one should take a look into later:
