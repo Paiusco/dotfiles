@@ -5,7 +5,7 @@
 call plug#begin('~/vim//plugged')      " Start for vim-plug
 
 Plug 'rafi/awesome-vim-colorschemes'   " Tons of colourschemes
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " Code Snippets
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " Code Snippets
 Plug 'preservim/nerdtree'              " Help with exploring files
 Plug 'itchyny/lightline.vim'           " Minimalist powerline (vim-airline seems overkill)
 Plug 'sheerun/vim-polyglot'            " Identation and syntax for tons of languages
@@ -55,9 +55,9 @@ set relativenumber   " Show relative line numbering
 set showmatch        " Show matching parenthesis
 set scrolloff=3      " Keep 3 lines off the edges of the screen when scrolling
 set virtualedit=all  " Allow the cursor to go into 'invalid' places
-set hlsearch         " Highlight seach terms
-set incsearch        " Highlight search while typing
-set ttyfast          " Have a fast tty
+set hlsearch         " Highlight seach terms (default on nvim)
+set incsearch        " Highlight search while typing (default on nvim)
+set ttyfast          " Have a fast tty  (default on nvim)
 set mouse=a          " Enable using the mouse if terminal emulator supports it
 set noswapfile       " No annoying swap file
 " }
@@ -88,7 +88,7 @@ nnoremap çw <esc>:w<cr>
 " toggle NERDtree with F3
 nnoremap <F3> :NERDTreeToggle<CR>
 
-" SirVer/ultisnips
+" SirVer/ultisnips (May be removed for NeoVim)
 " ------------------------------------------------------------------------------
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
