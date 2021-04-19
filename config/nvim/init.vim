@@ -60,6 +60,7 @@ set incsearch        " Highlight search while typing (default on nvim)
 set ttyfast          " Have a fast tty  (default on nvim)
 set mouse=a          " Enable using the mouse if terminal emulator supports it
 set noswapfile       " No annoying swap file
+set clipboard+=unnamedplus " Merge both system clipboard and vim's
 " }
 
 " Plugin settings, mappings and autocommands {
@@ -76,6 +77,12 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Get rid of search highlights
 nnoremap <leader><space> :noh<cr>
 
+" Copy to system's clipboard
+nnoremap <leader>y "*y<cr>
+
+" Paste fro system's clipboard
+nnoremap <leader>p "*p<cr>
+
 " Exist insert mode with çç
 inoremap çç <esc>
 
@@ -87,11 +94,6 @@ nnoremap çw <esc>:w<cr>
 
 " toggle NERDtree with F3
 nnoremap <F3> :NERDTreeToggle<CR>
-
-" SirVer/ultisnips (May be removed for NeoVim)
-" ------------------------------------------------------------------------------
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " ntpeters/vim-better-whitespace
 " ------------------------------------------------------------------------------
