@@ -10,6 +10,7 @@ Plug 'preservim/nerdtree'              " Help with exploring files
 Plug 'itchyny/lightline.vim'           " Minimalist powerline (vim-airline seems overkill)
 Plug 'sheerun/vim-polyglot'            " Identation and syntax for tons of languages
 Plug 'ntpeters/vim-better-whitespace'" Shows and trims whitespaces
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end() " End for vim-plug
 
 " This must be first
@@ -60,7 +61,7 @@ set incsearch        " Highlight search while typing (default on nvim)
 set ttyfast          " Have a fast tty  (default on nvim)
 set mouse=a          " Enable using the mouse if terminal emulator supports it
 set noswapfile       " No annoying swap file
-set clipboard+=unnamedplus " Merge both system clipboard and vim's
+set clipboard+=unnamedplus "Merge both system clipboard and nvim's
 " }
 
 " Plugin settings, mappings and autocommands {
