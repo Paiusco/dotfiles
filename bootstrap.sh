@@ -75,9 +75,9 @@ function copy_config_files()
 }
 ############## All functions are defined above this line #######################
 
-hardcoded_bins="git tig meld brave fish neovim tree curl neofetch terminator \
+hardcoded_bins="git tig meld brave fish neovim tree curl neofetch \
    alacritty ranger"
-i3_related_bins="i3 autotiling conky polybar pamac feh rofi nitrogen"
+i3_related_bins="i3 autotiling conky polybar feh rofi nitrogen"
 
 bins_to_install=$hardcoded_bins
 
@@ -143,7 +143,7 @@ $D sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/pl
 # Installing and configuring Oh My Fish
 $D curl -L https://get.oh-my.fish | fish
 
-$D terminator -e "fish ~/dotfiles/setup.fish" 2>/dev/null
+$D alacritty -e "fish ~/dotfiles/setup.fish" 2>/dev/null
 
 
 echo -e "${RED}${BOLD}DO NOT FORGET: Add user.name and user.email on git \
