@@ -180,6 +180,7 @@ bindsym Mod1+Ctrl+Left workspace prev
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 for_window [class="Teams"] move container to workspace 4
+for_window [class="Galculator"] floating enable
 #######################
 
 
@@ -234,7 +235,7 @@ font pango:monospace 10
 ########### Autostart - execute applications at boot time ##########
 
 # network
-exec --no-startup-id nm-applet
+exec_always --no-startup-id nm-applet --sm-disable
 
 # num lock activated
 exec_always --no-startup-id numlockx on
@@ -260,6 +261,9 @@ bindsym $mod+Return exec alacritty; focus
 
 #Browser simple config
 bindsym $mod+w exec $browser
+
+#Galculator
+bindsym XF86Calculator exec galculator
 
 #rofi theme selector
 bindsym control+mod1+r exec --no-startup-id rofi-theme-selector
@@ -309,8 +313,8 @@ smart_gaps on
 bar {
         status_command i3status
         position top
+        tray_output primary
 }
 
 #exec --no-startup-id compton -bfz
 #exec --no-startup-id xfce4-panel --disable-wm-check &
-exec --no-startup-id picom
