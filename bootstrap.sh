@@ -77,7 +77,7 @@ function copy_config_files()
 
 hardcoded_bins="git tig meld brave fish neovim tree curl neofetch \
    alacritty ranger"
-i3_related_bins="i3 autotiling conky polybar feh rofi nitrogen"
+i3_related_bins="i3 autotiling conky polybar feh rofi nitrogen xclip scrot"
 
 bins_to_install=$hardcoded_bins
 
