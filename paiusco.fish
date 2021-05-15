@@ -22,6 +22,8 @@ if status --is-interactive
    abbr -ag -- cd.. '..'
    abbr -ag -- ... '..'
    abbr -ag -- wget 'wget -c'
+   abbr -ag -- cat 'bat'
 end
+set -Ux EDITOR nvim
 
 neofetch

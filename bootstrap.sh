@@ -75,8 +75,8 @@ function copy_config_files()
 }
 ############## All functions are defined above this line #######################
 
-hardcoded_bins="git tig meld brave fish neovim tree curl neofetch \
-   alacritty ranger galculator"
+hardcoded_bins="bat git tig meld brave fish neovim tree curl neofetch \
+   alacritty ranger galculator qutebrowser"
 i3_related_bins="i3 autotiling conky polybar feh rofi nitrogen xclip scrot"
 
 bins_to_install=$hardcoded_bins
