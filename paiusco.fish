@@ -1,3 +1,5 @@
+set -Ux EDITOR nvim
+set -Ux CONFIG_PATH ~/.config/
 if status --is-interactive
    # Git abbrs
    abbr -ag -- ga 'git add'
@@ -23,7 +25,11 @@ if status --is-interactive
    abbr -ag -- ... '..'
    abbr -ag -- wget 'wget -c'
    abbr -ag -- cat 'bat'
+   # Config files
+   abbr -ag -- cvim 'nvim $CONFIG_PATH/nvim/init.vim'
+   abbr -ag -- ci3 'nvim $CONFIG_PATH/i3/config'
+   abbr -ag -- ci3blocks 'nvim $CONFIG_PATH/i3blocks/i3blocks.conf'
+   abbr -ag -- calacritty 'nvim $CONFIG_PATH/alacritty/alacritty.yml'
 end
-set -Ux EDITOR nvim
 
 neofetch
