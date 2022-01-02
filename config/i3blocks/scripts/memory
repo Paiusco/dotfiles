@@ -1,0 +1,20 @@
+#!/bin/bash
+
+case $BLOCK_BUTTON in
+   1)
+      notify-send "Biggest memory usage:
+$(ps axch -o cmd:15,%mem --sort=-%mem | head)"
+      ;;
+   3)
+      ;;
+esac
+
+# No idea why "printf" doesn't work on i3blocks (?)
+free --si | awk '/^Mem/ {
+   usage=$3;
+   total=$2/1024000;
+   if (usage >= 1000000)
+      printf "%.2fGB/%.2fGB (%.2f%)",usage/1024000,total,($3/$2)*100;
+   else
+      printf "%dMB/%.2fGB (%.2f%)",usage/1024,total,$($3/$2)*100;
+   print ""} '

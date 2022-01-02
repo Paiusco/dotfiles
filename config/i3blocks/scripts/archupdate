@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#add click control here!
+
+case $BLOCK_BUTTON in
+   1)
+      alacritty -e sudo pacman -Syyu
+      ;;
+   3)
+      ;;
+esac
+
+checkupdates | wc -l | awk '{ print($1 " updates available") }'

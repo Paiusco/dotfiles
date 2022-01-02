@@ -2,10 +2,12 @@
 
 This repo contains [@paiusco](https://github.com/Paiusco) dotfiles for:
 
-- fish
-- neovim
-- VSCode (w/o extensions)
-
+- Fish
+- Neovim
+- Alacritty
+- Ranger
+- i3wm 
+- Qtile
 
 
 ## Usage

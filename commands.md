@@ -1,4 +1,4 @@
-===================================================================================
+===================================================================================  
 Linux Commands
 
 source set-oe-env                                        - Environment variables to bitbake
@@ -11,7 +11,7 @@ Ctrl+Alt+Arrow	     - Show another desktop
 Super+Arrow          - Move window to another monitor
 Ctrl+Shift+Alt+arrow - Move selected window to another desktop
 
-===================================================================================
+===================================================================================  
 Terminator
 
 Ctrl+Shift+W    - Close terminal
@@ -21,7 +21,7 @@ Ctrl+Shift+X    - Maximise Terminal
 Alt+arrow       - Move focus
 Shift+PgUp/PgDn - Page terminal
 
-===================================================================================
+===================================================================================  
 VS Code
 
 Alt+O             - Switch Header/Source files C++
@@ -35,4 +35,3 @@ Shift+Alt+F12     - Find all references (Better than Ctrl+Shift+F for methods)
 Ctrl+K Enter      - Keep editor *useful* (Same as double click)
 Alt+Super+Arrow   - Move editor into Next/Previous group (Homemade)
 Ctrl+Shift+V      - Preview Markdown files
-

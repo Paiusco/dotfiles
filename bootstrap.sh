@@ -1,10 +1,6 @@
 #!/bin/bash
 
-## Writting down ideas first:
-
-# installation list: git, nvim, fish, terminator (Look into rxvt-unicode),
-#and configure it all.
-
+########## Output config ##########
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
@@ -12,56 +8,47 @@ NC='\033[0m' # No Color
 BOLD=$(tput bold)
 NORM=$(tput sgr0)
 
+# Variable to use for DryRun if requested by command line
+D=''
+
 #Var for differentiate logs from dryruns
 _echo="echo -e ${GREEN}[DEBUG]${NC}"
 
+#Prints the usage of the script
 function usage()
 {
    echo "Usage:"
-   echo "   bootstrap.sh -h         Display this help message"
-   echo "   bootstrap.sh -d         DryRun is on (one will see every command w/o running it)"
+   echo "   bootstrap.sh [options]\n"
+   echo "   Install and configure app for an amazing workflow :D"
+   echo "Options:"
+   echo "   -h           Display this help message"
+   echo "   -i           Install i3, its config files and dependencies"
+   echo "   -d           DryRun is on (one will see every command w/o running it)"
 }
 
-#This method does not use $_echo because the echo here is only for a return
-function linux_id()
-{
-   if [ -f /etc/os-release ]; then
-      . /etc/os-release
-      if [[ $ID_LIKE == "arch" ]]; then
-         echo "pacman"
-      elif [[ $ID_LIKE == "debian" ]]; then
-         echo "apt"
-      else
-         echo "Unknown"
-      fi
-   fi
-}
-
+#Install packages coming from parameter
 function install_bins()
 {
-   pkg_manager=$(linux_id)
-   $_echo "Package manager is:" $pkg_manager
-   $_echo "Packages to be installed:" $@
+   $_echo "Packages to be installed:" "$@"
 
-   case $pkg_manager in
+   $D sudo pacman -Sy --needed "$@"
+}
 
-      pacman)
-         $_echo "This is an Arch distro"
-         $D sudo $pkg_manager -S $@
-         ;;
-      apt)
-         $_echo "This is a Debian distro"
-         $D sudo $pkg_manager install $@
-         ;;
-      *)
-         $_echo "This distro is not recognized yet"
-         ;;
-   esac
+function copy_config_files()
+{
+   $D mkdir -p ~/.config/alacritty
+   $D mkdir -p ~/.config/ranger
+   $D mkdir -p ~/.config/qtile
+
+   $D cp -av ~/dotfiles/config/ranger/* ~/.config/ranger/
+   $D cp -av ~/dotfiles/config/alacritty/* ~/.config/alacritty/
+   $D cp -av ~/dotfiles/config/qtile/* ~/.config/qtile/
 }
 ############## All functions are defined above this line #######################
 
-# Variable to use for DryRun if requested by command line
-D=''
+hardcoded_bins="bat gitgui fish neovim exa ranger qutebrowser"
+
+bins_to_install=$hardcoded_bins
 
 # Parsing arguments
 while getopts ":hd" opt; do
@@ -83,31 +70,33 @@ while getopts ":hd" opt; do
 done
 shift $((OPTIND -1))
 
-bins_to_install="git terminator fish neovim tree"
 
-install_bins $bins_to_install
-if [ $? != 0 ]; then
+if ! install_bins "$bins_to_install"; then
    $_echo "Installation did not proceed well! Aborting..."
    exit 1
 fi
 
-$D chsh -s /usr/bin/fish
-if [ $? != 0 ]; then
-   $_echo "Change of shell did not proceed well! Aborting..."
+if ! copy_config_files; then
+   $_echo "Config copying did not proceed well! Aborting..."
    exit 1
 fi
 
-$D git config --global core.editor "nvim"
-if [ $? != 0 ]; then
-   $_echo "Git config did not proceed well! Aborting..."
-   exit 1
-fi
+# Configure nvim
+$D mkdir -p ~/.config/nvim
+$D cp -av ~/dotfiles/config/init.vim ~/.config/nvim/
 
-#TODO: Configure fish and nvim!
-$D cp -av ~/dotfiles/init.vim ~/.config/nvim/
+#Configure Fish
+cp -rv ~/dotfiles/config/fish/functions/* ~/.config/fish/functions/
+cp -v ~/dotfiles/paiusco.fish ~/.config/fish/config.fish
 
-terminator -e "~/dotfiles/setup.fish" 2>/dev/null # 2>&1 is not working for some reason
+# Vim-plug installation
+$D sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
+#Starship installation
+$D sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+
+$D printf "\neval \"\$(starship init bash)\"" >> ~/.bashrc
 
 echo -e "${RED}${BOLD}DO NOT FORGET: Add user.name and user.email on git \
    config!${NC}${NORM}"
