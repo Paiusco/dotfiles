@@ -6,7 +6,8 @@ This repo contains [@paiusco](https://github.com/Paiusco) dotfiles for:
 - Neovim
 - Alacritty
 - Ranger
-- i3wm (can be left out if "-i" option is not used)
+- i3wm 
+- Qtile
 
 
 ## Usage
