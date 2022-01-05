@@ -335,12 +335,12 @@ def init_widgets_list():
                #          threshold = 80
                #          ),
                # battery option 1  ArcoLinux Horizontal icons do not forget to import arcobattery at the top
-               widget.Sep(
-                        linewidth = 1,
-                        padding = 10,
-                        foreground = colors[2],
-                        background = colors[1]
-                        ),
+               # widget.Sep(
+               #          linewidth = 1,
+               #          padding = 10,
+               #          foreground = colors[2],
+               #          background = colors[1]
+               #          ),
                # arcobattery.BatteryIcon(
                #          padding=0,
                #          scale=0.7,
@@ -381,20 +381,29 @@ def init_widgets_list():
                #          core = "all",
                #          type = "box"
                #          ),
-               # widget.Sep(
-               #          linewidth = 1,
-               #          padding = 10,
-               #          foreground = colors[2],
-               #          background = colors[1]
-               #          ),
-               # widget.TextBox(
-               #          font="FontAwesome",
-               #          text="  ",
-               #          foreground=colors[4],
-               #          background=colors[1],
-               #          padding = 0,
-               #          fontsize=16
-               #          ),
+               widget.Mpris2(
+                        font="Noto Sans",
+                        fontsize=12,
+                        display_metadata=['xesam:title', 'xesam:artist'],
+                        name="Spotify",
+                        objname="org.mpris.MediaPlayer2.spotify",
+                        stop_pause_text='',
+                        scrolls_chars=None
+                        ),
+               widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[2],
+                        background = colors[1]
+                        ),
+               widget.TextBox(
+                        font="FontAwesome",
+                        text="  ",
+                        foreground=colors[4],
+                        background=colors[1],
+                        padding = 0,
+                        fontsize=16
+                        ),
                widget.Memory(
                         font="Noto Sans",
                         format = '{MemUsed: 0.2f}Gb/{MemTotal: 0.2f}Gb',
@@ -424,12 +433,12 @@ def init_widgets_list():
                         fontsize = 12,
                         format="%Y-%m-%d %H:%M"
                         ),
-               # widget.Sep(
-               #          linewidth = 1,
-               #          padding = 10,
-               #          foreground = colors[2],
-               #          background = colors[1]
-               #          ),
+               widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[2],
+                        background = colors[1]
+                        ),
                widget.Systray(
                         background=colors[1],
                         icon_size=20,
