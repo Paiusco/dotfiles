@@ -250,7 +250,7 @@ def init_widgets_defaults():
 
 widget_defaults = init_widgets_defaults()
 
-def init_widgets_list():
+def init_widgets_list(screen_number):
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
                widget.GroupBox(font="FontAwesome",
@@ -335,20 +335,38 @@ def init_widgets_list():
                #          threshold = 80
                #          ),
                # battery option 1  ArcoLinux Horizontal icons do not forget to import arcobattery at the top
-               # widget.Sep(
-               #          linewidth = 1,
-               #          padding = 10,
-               #          foreground = colors[2],
-               #          background = colors[1]
-               #          ),
-               # arcobattery.BatteryIcon(
-               #          padding=0,
-               #          scale=0.7,
-               #          y_poss=2,
-               #          theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
-               #          update_interval = 5,
-               #          background = colors[1]
-               #          ),
+               widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[2],
+                        background = colors[1]
+                        ),
+               arcobattery.BatteryIcon(
+                        padding=0,
+                        scale=0.7,
+                        y_poss=2,
+                        theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
+                        update_interval = 5,
+                        background = colors[1]
+                        ),
+               widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[2],
+                        background = colors[1]
+                        ),
+               widget.TextBox(
+                        font="FontAwesome",
+                        text="  ",
+                        foreground=colors[4],
+                        background=colors[1],
+                        padding = 0,
+                        fontsize=16
+                        ),
+               widget.CheckUpdates(
+                        no_update_string='No updates',
+                        update_interval=3600
+                        ),
                # # battery option 2  from Qtile
                # widget.Sep(
                #          linewidth = 1,
@@ -362,7 +380,7 @@ def init_widgets_list():
                #          fontsize = 12,
                #          foreground = colors[5],
                #          background = colors[1],
-	           #          ),
+               #          ),
                # widget.TextBox(
                #          font="FontAwesome",
                #          text="  ",
@@ -431,40 +449,52 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[1],
                         fontsize = 12,
-                        format="%Y-%m-%d %H:%M"
+                        format="%d-%m-%Y %H:%M"
                         ),
                widget.Sep(
-                        linewidth = 1,
-                        padding = 10,
-                        foreground = colors[2],
-                        background = colors[1]
-                        ),
-               widget.Systray(
-                        background=colors[1],
-                        icon_size=20,
-                        padding = 4
-                        ),
-              ]
+                   linewidth = 0,
+                   padding = 10,
+                   foreground = colors[2],
+                   background = colors[1]
+               ),
+               ]
+
+    if screen_number == 1:
+       widgets_list.extend([
+            widget.Sep(
+                linewidth = 1,
+                padding = 10,
+                foreground = colors[2],
+                background = colors[1]
+            ),
+            widget.Systray(
+                background=colors[1],
+                icon_size=15,
+                padding = 4
+            ),
+            widget.Sep(
+                linewidth = 0,
+                padding = 10,
+                foreground = colors[2],
+                background = colors[1]
+            )
+       ])
     return widgets_list
 
-widgets_list = init_widgets_list()
-
-
 def init_widgets_screen1():
-    widgets_screen1 = init_widgets_list()
+    widgets_screen1 = init_widgets_list(1)
     return widgets_screen1
 
 def init_widgets_screen2():
-    widgets_screen2 = init_widgets_list()
+    widgets_screen2 = init_widgets_list(2)
     return widgets_screen2
 
 widgets_screen1 = init_widgets_screen1()
 widgets_screen2 = init_widgets_screen2()
 
-
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=26, opacity=0.8)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26, opacity=0.8))]
+    return [Screen(top=bar.Bar(widgets=widgets_screen1, size=26, opacity=0.8)),
+            Screen(top=bar.Bar(widgets=widgets_screen2, size=26, opacity=0.8))]
 screens = init_screens()
 
 
@@ -571,6 +601,8 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='feh'),
     Match(wm_class='Galculator'),
     Match(wm_class='arcolinux-logout'),
+    Match(wm_class='Origin'),
+    Match(wm_class='Wine'),
 
 ],  fullscreen_border_width = 0, border_width = 0)
 auto_fullscreen = True
