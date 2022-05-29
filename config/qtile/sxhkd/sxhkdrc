@@ -42,9 +42,9 @@ super + w
 super + c
     conky-toggle
 
-#arcolinux-logout
+#archlinux-logout
 super + x
-    arcolinux-logout
+    archlinux-logout
 
 #Rofi theme selector
 super + r

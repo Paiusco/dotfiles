@@ -365,7 +365,9 @@ def init_widgets_list(screen_number):
                         ),
                widget.CheckUpdates(
                         no_update_string='No updates',
-                        update_interval=3600
+                        update_interval=3600,
+                        distro='Arch_checkupdates',
+                        execute='alacritty -e sudo pacman -Syyu'
                         ),
                # # battery option 2  from Qtile
                # widget.Sep(
