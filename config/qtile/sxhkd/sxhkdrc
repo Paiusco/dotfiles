@@ -42,9 +42,9 @@ super + w
 super + c
     conky-toggle
 
-#arcolinux-logout
+#archlinux-logout
 super + x
-    arcolinux-logout
+    archlinux-logout
 
 #Rofi theme selector
 super + r
@@ -287,6 +287,13 @@ ctrl + alt + o
 # SUPER + KEYS
 #################################################################
 
+#BR keyboard
+super + b
+   setxkbmap br
+
+#US keyboard
+super + u
+   setxkbmap us
 #Toggle fullscreen of window
 #super + f
 #    qtile-cmd -o window -f toggle_fullscreen

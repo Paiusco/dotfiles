@@ -2,7 +2,7 @@
 " Based from awidegreen
 " https://github.com/awidegreen/dotfiles
 
-call plug#begin('~/vim//plugged')      " Start for vim-plug
+call plug#begin('~/.vim/plugged')      " Start for vim-plug
 
 Plug 'rafi/awesome-vim-colorschemes'   " Tons of colourschemes
 " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " Code Snippets
@@ -10,7 +10,11 @@ Plug 'preservim/nerdtree'              " Help with exploring files
 Plug 'itchyny/lightline.vim'           " Minimalist powerline (vim-airline seems overkill)
 Plug 'sheerun/vim-polyglot'            " Identation and syntax for tons of languages
 Plug 'ntpeters/vim-better-whitespace'" Shows and trims whitespaces
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" Telescope requirements
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 call plug#end() " End for vim-plug
 
 " This must be first
@@ -44,6 +48,10 @@ syntax on
 
 set noshowmode       " *Don't* show what mode you're currently editing in
                      " (because lightline will do that for you)
+set guicursor=       " Keep cursor as block on insert mode
+set hidden           " ? Primagen
+set scrolloff=5      " end of screen offset
+set signcolumn=yes   " extra column to be able to show e.g. line errors
 set nowrap           " Don't wrap lines
 set tabstop=3        " Tab in spaces
 set softtabstop=3    " When hitting <BS>, pretend like a tab is removed,
@@ -95,6 +103,16 @@ nnoremap çw <esc>:w<cr>
 
 " toggle NERDtree with F3
 nnoremap <F3> :NERDTreeToggle<CR>
+
+
+" Telescope maps
+nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
+nnoremap <Leader>pf :lua require('telescope.builtin').find_files()<CR>
+
+nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
+nnoremap <leader>pb :lua require('telescope.builtin').buffers()<CR>
+nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
 
 " ntpeters/vim-better-whitespace
 " ------------------------------------------------------------------------------

@@ -1,0 +1,35 @@
+#My Personal Aliases
+alias vim="nvim"
+alias br="setxkbmap br"
+alias us="setxkbmap us"
+
+alias less="bat"
+
+alias ls="exa -F --group-directories-first"
+alias ll="exa -gF --group-directories-first -l"
+alias la="exa -F --group-directories-first -a"
+alias lla="exa -F  --group-directories-first -la"
+alias tree="exa -F --group-directories-first -T -L"
+
+# Pacman aliases
+alias installed="pacman -Qet"
+alias dep="pactree -u"
+alias dep_reverse="pactree -r"
+
+#Git specific aliases
+alias ga="git add"
+alias gc="git commit -v"
+alias gca="git commit -av"
+alias gco="git checkout"
+alias gamen="git commit --amend"
+alias gpl="git pull"
+alias gps="git push"
+alias gs="git status"
+alias gd="git diff"
+
+# Exporting variable for bitwarden
+export BW_CLIENTSECRET="Ok35LSim1+Ygp//m1/D4iNpLyWWyTYjtcMk63EVA4+3rVE6Euve3qysINN2o4a0yXnEEqiQYUYxbXrUwq9xdPw=="
+
+
+#Run Starship
+eval "$(starship init zsh)"
