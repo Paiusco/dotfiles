@@ -215,6 +215,9 @@ ctrl + shift + Escape
 Print
     scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
 
+#Auto crop
+shift + Print
+    scrot -s '/tmp/screenshot-%Y-%m-%d-%s_%h-%k-%M.png' -e 'xclip -selection c -t image/png -i $f'
 
 #################################################################
 #     FUNCTION KEYS
