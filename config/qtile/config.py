@@ -35,6 +35,7 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
 from libqtile.command import lazy
 from libqtile.widget import Spacer
 import arcobattery
+import asyncio
 
 #mod4 or mod = super key
 mod = "mod4"
@@ -64,12 +65,9 @@ keys = [
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
 
-
 # SUPER + SHIFT KEYS
 
-    Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
-
 
 # QTILE LAYOUT KEYS
     Key([mod], "n", lazy.layout.normalize()),
@@ -168,12 +166,8 @@ groups = []
 # FOR QWERTY KEYBOARDS
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
 
-# FOR AZERTY KEYBOARDS
-#group_names = ["ampersand", "eacute", "quotedbl", "apostrophe", "parenleft", "section", "egrave", "exclam", "ccedilla", "agrave",]
-
 #group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
 group_labels = ["", "", "", "", "", "", "", "", "", "",]
-#group_labels = ["Web", "Edit/chat", "Image", "Gimp", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
 
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
 
@@ -214,11 +208,11 @@ layout_theme = init_layout_theme()
 
 layouts = [
     layout.MonadTall(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
-    layout.MonadWide(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
+#    layout.MonadWide(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
     layout.Matrix(**layout_theme),
-    layout.Bsp(**layout_theme),
+#    layout.Bsp(**layout_theme),
     layout.Floating(**layout_theme),
-    layout.RatioTile(**layout_theme),
+#    layout.RatioTile(**layout_theme),
     layout.Max(**layout_theme)
 ]
 
@@ -401,15 +395,15 @@ def init_widgets_list(screen_number):
                #          core = "all",
                #          type = "box"
                #          ),
-               widget.Mpris2(
-                        font="Noto Sans",
-                        fontsize=12,
-                        display_metadata=['xesam:title', 'xesam:artist'],
-                        name="Spotify",
-                        objname="org.mpris.MediaPlayer2.spotify",
-                        stop_pause_text='',
-                        scrolls_chars=None
-                        ),
+              # widget.Mpris2(
+              #          font="Noto Sans",
+              #          fontsize=12,
+              #          display_metadata=['xesam:title', 'xesam:artist'],
+              #          name="Spotify",
+              #          objname="org.mpris.MediaPlayer2.spotify",
+              #          stop_pause_text='',
+              #          scrolls_chars=None
+              #          ),
                widget.Sep(
                         linewidth = 1,
                         padding = 10,
@@ -432,6 +426,7 @@ def init_widgets_list(screen_number):
                         fontsize = 12,
                         foreground = colors[5],
                         background = colors[1],
+                        execute='alacritty -e htop',
                        ),
                widget.Sep(
                         linewidth = 1,
@@ -451,7 +446,8 @@ def init_widgets_list(screen_number):
                         foreground = colors[5],
                         background = colors[1],
                         fontsize = 12,
-                        format="%d-%m-%Y %H:%M"
+                        format="%d-%m-%Y %H:%M",
+                        execute='alacritty -e cal 2022'
                         ),
                widget.Sep(
                    linewidth = 0,
@@ -517,42 +513,30 @@ dgroups_app_rules = []
 #########################################################
 ################ assgin apps to groups ##################
 #########################################################
-# @hook.subscribe.client_new
-# def assign_app_group(client):
-#     d = {}
+
+@hook.subscribe.client_new
+async def assign_app_group(client):
+    d = {}
 #     #####################################################################################
 #     ### Use xprop fo find  the value of WM_CLASS(STRING) -> First field is sufficient ###
 #     #####################################################################################
-#     d[group_names[0]] = ["Navigator", "Firefox", "Vivaldi-stable", "Vivaldi-snapshot", "Chromium", "Google-chrome", "Brave", "Brave-browser",
-#               "navigator", "firefox", "vivaldi-stable", "vivaldi-snapshot", "chromium", "google-chrome", "brave", "brave-browser", ]
-#     d[group_names[1]] = [ "Atom", "Subl", "Geany", "Brackets", "Code-oss", "Code", "TelegramDesktop", "Discord",
-#                "atom", "subl", "geany", "brackets", "code-oss", "code", "telegramDesktop", "discord", ]
-#     d[group_names[2]] = ["Inkscape", "Nomacs", "Ristretto", "Nitrogen", "Feh",
-#               "inkscape", "nomacs", "ristretto", "nitrogen", "feh", ]
-#     d[group_names[3]] = ["Gimp", "gimp" ]
-#     d[group_names[4]] = ["Meld", "meld", "org.gnome.meld" "org.gnome.Meld" ]
-#     d[group_names[5]] = ["Vlc","vlc", "Mpv", "mpv" ]
-#     d[group_names[6]] = ["VirtualBox Manager", "VirtualBox Machine", "Vmplayer",
-#               "virtualbox manager", "virtualbox machine", "vmplayer", ]
-#     d[group_names[7]] = ["Thunar", "Nemo", "Caja", "Nautilus", "org.gnome.Nautilus", "Pcmanfm", "Pcmanfm-qt",
-#               "thunar", "nemo", "caja", "nautilus", "org.gnome.nautilus", "pcmanfm", "pcmanfm-qt", ]
-#     d[group_names[8]] = ["Evolution", "Geary", "Mail", "Thunderbird",
-#               "evolution", "geary", "mail", "thunderbird" ]
-#     d[group_names[9]] = ["Spotify", "Pragha", "Clementine", "Deadbeef", "Audacious",
-#               "spotify", "pragha", "clementine", "deadbeef", "audacious" ]
+    d[group_names[8]] = ["Signal", "signal", ]
+    d[group_names[9]] = ["Spotify", "spotify", ]
 #     ######################################################################################
 #
-# wm_class = client.window.get_wm_class()[0]
-#
-#     for i in range(len(d)):
-#         if wm_class in list(d.values())[i]:
-#             group = list(d.keys())[i]
-#             client.togroup(group)
-#             client.group.cmd_toscreen(toggle=False)
+    wm_class = client.window.get_wm_class()[0]
+
+
+    if client.name == 'spotify':
+        await asyncio.sleep(0.02)
+    for i in range(len(d)):
+        if wm_class in list(d.values())[i]:
+            group = list(d.keys())[i]
+            client.togroup(group)
+            client.group.cmd_toscreen(toggle=False)
 
 # END
 # ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
-
 
 
 main = None
