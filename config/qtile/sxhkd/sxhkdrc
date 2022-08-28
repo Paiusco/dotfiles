@@ -6,18 +6,6 @@
 # SUPER + FUNCTION KEYS
 #################################################################
 
-#Meld
-super + F5
-    meld
-
-#Vlc
-super + F6
-    vlc --video-on-top
-
-#Thunar
-super + F8
-    thunar
-
 #Spotify
 super + F10
     spotify
@@ -38,10 +26,6 @@ super + F12
 super + w
     brave
 
-#Conky-toggle
-super + c
-    conky-toggle
-
 #archlinux-logout
 super + x
     archlinux-logout
@@ -54,21 +38,9 @@ super + r
 super + v
     pavucontrol
 
-#Pragha
-super + m
-    pragha
-
 #Alacritty
 super + Return
     alacritty
-
-#Xkill
-super + Escape
-    xkill
-
-#Whatsapp
-super + z
-    whatsapp-nativefier
 
 #Signal
 super + s
@@ -102,22 +74,6 @@ ctrl + alt + w
 ctrl + alt + e
     arcolinux-tweak-tool
 
-#conky-rotate
-ctrl + alt + Next
-     conky-rotate -n
-
-#conky-rotate
-ctrl + alt + Prior
-    conky-rotate -p
-
-#File-Manager
-ctrl + alt + b
-     thunar
-
-#Pamac-manager
-ctrl + alt + p
-    pamac-manager
-
 #Xfce4-settings-manager
 ctrl + alt + m
      xfce4-settings-manager
@@ -133,10 +89,6 @@ ctrl + alt + r
 #Spotify
 ctrl + alt + s
    spotify
-
-#urxvt
-ctrl + alt + Return
-    alacritty
 
 #################################################################
 # ALT + ... KEYS
@@ -173,30 +125,6 @@ alt + Up
 #Wallpaper resume
 alt + Down
     variety --resume
-
-#################################################################
-#VARIETY KEYS WITH PYWAL
-#################################################################
-
-#Wallpaper trash
-alt + shift + t
-    variety -t && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
-
-#Wallpaper next
-alt + shift + n
-    variety -n && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
-
-#Wallpaper previous
-alt + shift + p
-    variety -p && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
-
-#Wallpaper favorite
-alt + shift + f
-    variety -f && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
-
-#Wallpaper update
-alt + shift + u
-    wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
 
 #################################################################
 # CONTROL + SHIFT KEYS
@@ -297,14 +225,6 @@ super + b
 #US keyboard
 super + u
    setxkbmap us
-#Toggle fullscreen of window
-#super + f
-#    qtile-cmd -o window -f toggle_fullscreen
-
-# normalize layout (undo size changes)
-#super + n
-#    qtile-cmd -o layout -f normalize
-
 #kill
 #super + q
 #    qtile-cmd -o window -f kill
@@ -321,66 +241,11 @@ super + u
 # SUPER KEYS
 #################################################################
 
-#Focus selected desktop
-#super + Tab
-#    qtile-cmd -o screen -f next_group
-
-# set the window state
-#super + space
-#    qtile-cmd -o cmd -f next_layout
-
-
 #################################################################
 # SUPER + SHIFT KEYS
 #################################################################
-
-#kill
-#super + shift + q
-#    qtile-cmd -o window -f kill
-
-#Quit Qtile
-#super + shift + x
-#    qtile-cmd -o cmd -f shutdown
-
-# FLIP LAYOUT FOR MONADTALL/MONADWIDE
-#super + shift + f
-#    qtile-cmd -o layout -f flip
-
-# MOVE WINDOWS UP OR DOWN BSP LAYOUT
-
-#super + shift + {h,j,k,l}
-#    qtile-cmd -o layout -f {shuffle_left,shuffle_down,shuffle_up,shuffle_right}
-
-# MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
-
-#super + shift + {Up,Down,Left,Right}
-#    qtile-cmd -o layout -f {shuffle_up,shuffle_down,swap_left,swap_right}
-
-# TOGGLE FLOATING LAYOUT
-#super + shift + space
-#    qtile-cmd -o window -f toggle_floating
-
-#Reload Qtile
-#super + shift + r
-#    qtile-cmd -o cmd -f restart
-
 
 #################################################################
 # SUPER + ALT KEYS
 #################################################################
 
-
-##################################
-## The RESIZE KEYS ARE RESERVED ##
-##  ~/.config/qtile/config.py   ##
-##################################
-## RESIZE UP, DOWN, LEFT, RIGHT ##
-#super + control + l
-#super + control + Right
-#super + control + h
-#super + control + Left
-#super + control + k
-#super + control + Up
-#super + control + j
-#super + control + Down
-##################################
