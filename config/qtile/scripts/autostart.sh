@@ -14,14 +14,8 @@ function run {
 #Find out your monitor name with xrandr or arandr (save and you get this line)
 xrandr --output eDP-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-2 --off --output DP-1-0 --off --output DP-1-1 --off --output HDMI-1-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 
-#change your keyboard if you need it
-#setxkbmap -layout be
-
-#autostart ArcoLinux Welcome App
-run dex $HOME/.config/autostart/arcolinux-welcome-app.desktop &
-
 #Some ways to set your wallpaper besides variety or nitrogen
-feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
+feh --bg-fill /usr/share/backgrounds/arcolinux/wallpaper.jpg &
 
 #start sxhkd to replace Qtile native key-bindings
 run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
@@ -30,7 +24,7 @@ run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
 run nm-applet &
 numlockx on &
 blueberry-tray &
-picom --config $HOME/.config/qtile/scripts/picom.conf &
+#picom --config $HOME/.config/qtile/scripts/picom.conf &
 
 #starting user applications at boot time
 run volumeicon &

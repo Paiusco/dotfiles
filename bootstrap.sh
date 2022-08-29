@@ -31,7 +31,7 @@ function install_bins()
 {
    $_echo "Packages to be installed:" "$@"
 
-   $D sudo pacman -Sy --needed "$@"
+   $D sudo pacman -Syyu --needed "$@"
 }
 
 function copy_config_files()
@@ -46,8 +46,28 @@ function copy_config_files()
 }
 ############## All functions are defined above this line #######################
 
-hardcoded_bins="bat gitgui fish neovim exa ranger qutebrowser"
+hardcoded_bins=" \
+   fish \
+   rofi \
+   feh \
+   neovim \
+   exa \
+   ranger \
+   qutebrowser \
+   brave \
+   neofetch \
+   libwnck3 \
+   lxappearance \
+   htop \
+   blueberry \
+   man \
+   scrot \
+   xclip \
+   spotify \
+   alacritty \
+   ttf-font-awesome"
 
+# add later -> archlinux-tweak-tool to change themes :)
 bins_to_install=$hardcoded_bins
 
 # Parsing arguments
