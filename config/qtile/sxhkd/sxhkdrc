@@ -6,10 +6,6 @@
 # SUPER + FUNCTION KEYS
 #################################################################
 
-#Spotify
-super + F10
-    spotify
-
 #Rofi Fullscreen
 super + F11
     rofi -theme-str 'window \{width: 100%;height: 100%;\}' -show drun
@@ -24,7 +20,7 @@ super + F12
 
 #Browser
 super + w
-    brave
+    firefox
 
 #archlinux-logout
 super + x
@@ -46,6 +42,14 @@ super + Return
 super + s
     signal-desktop
 
+#Calculator
+super + c
+    galculator
+
+#Bluetooh
+super + b
+    blueberry
+
 #################################################################
 # SUPER + SHIFT KEYS
 #################################################################
@@ -60,15 +64,11 @@ super + shift + d
 
 #reload sxhkd:
 super + shift + s
-	pkill -USR1 -x sxhkd
+	steam
 
 #################################################################
 # CONTROL + ALT KEYS
 #################################################################
-
-#arcolinux-welcome-app
-ctrl + alt + w
-     arcolinux-welcome-app
 
 #arcolinux-tweak-tool
 ctrl + alt + e
@@ -77,10 +77,6 @@ ctrl + alt + e
 #Xfce4-settings-manager
 ctrl + alt + m
      xfce4-settings-manager
-
-#Pulse Audio Control
-ctrl + alt + u
-     pavucontrol
 
 #Rofi theme selector
 ctrl + alt + r
@@ -94,38 +90,6 @@ ctrl + alt + s
 # ALT + ... KEYS
 #################################################################
 
-#Wallpaper trash
-alt + t
-    variety -t
-
-#Wallpaper next
-alt + n
-    variety -n
-
-#Wallpaper previous
-alt + p
-    variety -p
-
-#Wallpaper favorite
-alt + f
-    variety -f
-
-#Wallpaper previous
-alt + Left
-    variety -p
-
-#Wallpaper next
-alt + Right
-    variety -n
-
-#Wallpaper toggle-pause
-alt + Up
-    variety --toggle-pause
-
-#Wallpaper resume
-alt + Down
-    variety --resume
-
 #################################################################
 # CONTROL + SHIFT KEYS
 #################################################################
@@ -133,7 +97,6 @@ alt + Down
 #Xcfe4-TaskManager
 ctrl + shift + Escape
     xfce4-taskmanager
-
 
 #################################################################
 #     SCREENSHOTS
@@ -166,15 +129,6 @@ XF86AudioLowerVolume
 #Mute
 XF86AudioMute
     amixer -D pulse set Master 1+ toggle
-
-#Playerctl works for Pragha, Spotify and others
-#Delete the line for playerctl if you want to use mpc
-#and replace it with the corresponding code
-#mpc works for e.g.ncmpcpp
-#mpc toggle
-#mpc next
-#mpc prev
-#mpc stop
 
 #PLAY
 XF86AudioPlay
@@ -210,10 +164,6 @@ XF86MonBrightnessDown
 # CTRL + ALT KEYS
 #################################################################
 
-#Picom Toggle
-ctrl + alt + o
-    ~/.config/qtile/scripts/picom-toggle.sh
-
 #################################################################
 # SUPER + KEYS
 #################################################################
@@ -222,20 +172,9 @@ ctrl + alt + o
 super + b
    setxkbmap br
 
-#US keyboard
-super + u
-   setxkbmap us
-#kill
-#super + q
-#    qtile-cmd -o window -f kill
-
-# Foucs WINDOW (Navigate)
-#super + {Left,Down,Up,Right}
-#    qtile-cmd -o layout -f {left,down,up,right}
-
-# Foucs WINDOW (Navigate)
-#super + {h,j,k,l}
-#    qtile-cmd -o layout -f {left,down,up,right}
+#US keyboard international
+super + i
+   setxkbmap -layout us -variant intl
 
 #################################################################
 # SUPER KEYS

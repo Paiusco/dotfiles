@@ -65,9 +65,10 @@ hardcoded_bins=" \
    xclip \
    spotify \
    alacritty \
+   betterlockscreen \
    ttf-font-awesome"
 
-# add later -> archlinux-tweak-tool to change themes :)
+# add later -> archlinux-tweak-tool and archlinux-logout to change themes :)
 bins_to_install=$hardcoded_bins
 
 # Parsing arguments
