@@ -50,6 +50,10 @@ super + c
 super + b
     blueberry
 
+#Bluetooh
+super + h
+    bluetoothctl -- connect F8:4E:17:F9:1E:CA
+
 #################################################################
 # SUPER + SHIFT KEYS
 #################################################################
@@ -62,7 +66,7 @@ super + shift + Return
 super + shift + d
 	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
 
-#reload sxhkd:
+# Steam
 super + shift + s
 	steam
 
@@ -77,10 +81,6 @@ ctrl + alt + e
 #Xfce4-settings-manager
 ctrl + alt + m
      xfce4-settings-manager
-
-#Rofi theme selector
-ctrl + alt + r
-  rofi-theme-selector
 
 #Spotify
 ctrl + alt + s
@@ -108,7 +108,7 @@ Print
 
 #Auto crop
 shift + Print
-    scrot -s '/tmp/screenshot-%Y-%m-%d-%s_%h-%k-%M.png' -e 'xclip -selection c -t image/png -i $f'
+    scrot -s '/tmp/screenshot-%Y-%m-%d-%s_%h-%H-%M.png' -e 'xclip -selection clipboard -t image/png -i $f'
 
 #################################################################
 #     FUNCTION KEYS
