@@ -2,6 +2,12 @@
 
 This repo contains [@paiusco](https://github.com/Paiusco) dotfiles for:
 
+Started to use `chezmoi` for handling dotfiles:
+- Fish
+- Neovim
+- Starship
+
+Under bkp:
 - Fish
 - Zsh
 - Neovim
@@ -13,19 +19,5 @@ This repo contains [@paiusco](https://github.com/Paiusco) dotfiles for:
 
 ## Usage
 
-    git clone https://github.com/Paiusco/dotfiles.git ~/dotfiles
-    cd ~/dotfiles
-    ./bootstrap.sh
+TBD using chezmoi
 
------------------
-
-# Vim configuration details
-
-## Vim leader key mapping
-This describes the configuration leader mapping including all installed plug-ins.
-
-I have mapped the leader key to `<space>`
-
-```viml
-let mapleader = " "
-```
