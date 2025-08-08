@@ -380,7 +380,7 @@ require('lazy').setup({
             preview_width = 70,
           },
           path_display = { 'smart' },
-          previuew = {
+          preview = {
             color_devicons = true,
           },
           -- path_display = {
